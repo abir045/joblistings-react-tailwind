@@ -15,13 +15,16 @@ const Home = () => {
   console.log(data);
 
   return (
-    <div className="flex flex-col mx-[5%] my-[5%]">
+    <div className="flex flex-col mx-[5%] my-[10%] space-y-10">
       {data &&
         data.map((item) => (
-          <div className="flex flex-col space-y-5 mb-5">
-            <img className="w-[48px]" src={item.logo} />
+          <div className="relative flex flex-col space-y-4 bg-white mb-5 py-5 border-l-[5px] px-[5%] border-[#5ca5a5] drop-shadow-lg rounded-lg ">
+            <img
+              className="absolute -top-[10%] w-[48px] h-[48px]"
+              src={item.logo}
+            />
 
-            <h5 className="text-[13px] leading-3 text-[#5ca5a5] font-bold">
+            <h5 className="text-[13px] leading-3    text-[#5ca5a5] font-bold">
               {item.company}
             </h5>
 
@@ -37,17 +40,25 @@ const Home = () => {
               <span className="flex">{item.location}</span>
             </div>
 
+            <hr className="border-x  bg-[#979797]" />
+
             <div className="flex space-x-5 text-base font-bold text-[#5ca5a5] tracking-[-0.123px]">
               <span>{item.role}</span>
               <span>{item.level}</span>
+            </div>
+
+            <div className="flex space-x-5 text-base font-bold text-[#5ca5a5] tracking-[-0.123px] ">
               {item.languages.map((item) => (
-                <div className="flex-row">
+                <div className="flex-row mb-5">
+                  <span>{item}</span>
+                </div>
+              ))}
+              {item.tools.map((item) => (
+                <div className="flex-row mb-5 ">
                   <span>{item}</span>
                 </div>
               ))}
             </div>
-
-            <hr className="border-x  bg-[#979797]" />
           </div>
         ))}
     </div>
