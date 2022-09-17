@@ -19,14 +19,14 @@ const Home = () => {
   // border-l-[5px]
 
   return (
-    <div className="flex flex-col mx-[5%] my-[10%] space-y-10 xl:space-y-5 xl:mr-15 xl:ml-40 xl:my-[5%]">
+    <div className="flex flex-col mx-[5%]  space-y-10 xl:space-y-5 xl:mr-15 xl:ml-40 xl:my-[5%]">
       {data &&
         data.map((item) => (
           <div
             style={{
               borderLeft: item.new && item.featured ? "5px solid #5ca5a5" : "",
             }}
-            className="relative flex flex-col space-y-4 bg-white mb-5 py-5  px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
+            className="relative flex flex-col mt-[15%]  space-y-4 bg-white  py-2  px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
           >
             <img
               className="absolute -top-[10%]  w-[48px] h-[48px] xl:hidden"
