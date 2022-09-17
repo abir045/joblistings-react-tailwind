@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import oval from "../images/oval.svg";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -14,11 +15,19 @@ const Home = () => {
   }, []);
   console.log(data);
 
+  // border-[#5ca5a5]
+  // border-l-[5px]
+
   return (
     <div className="flex flex-col mx-[5%] my-[10%] space-y-10 xl:space-y-5 xl:mr-15 xl:ml-40 xl:my-[5%]">
       {data &&
         data.map((item) => (
-          <div className="relative flex flex-col space-y-4 bg-white mb-5 py-5 border-l-[5px] px-[5%] border-[#5ca5a5] drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  ">
+          <div
+            style={{
+              borderLeft: item.new && item.featured ? "5px solid #5ca5a5" : "",
+            }}
+            className="relative flex flex-col space-y-4 bg-white mb-5 py-5  px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
+          >
             <img
               className="absolute -top-[10%]  w-[48px] h-[48px] xl:hidden"
               src={item.logo}
@@ -27,9 +36,23 @@ const Home = () => {
             <img className="hidden w-[88px] h-[88px] xl:flex" src={item.logo} />
 
             <div className="flex flex-col space-y-3 w-[80%]">
-              <h5 className="text-[13px] leading-3    text-[#5ca5a5] font-bold xl:text-[18px] xl:leading-[17px]">
-                {item.company}
-              </h5>
+              <div className="flex space-x-5 items-center">
+                <h5 className="text-[13px] leading-3    text-[#5ca5a5] font-bold xl:text-[18px] xl:leading-[17px]">
+                  {item.company}
+                </h5>
+                {item.new && item.featured ? (
+                  <div className="flex space-x-2 text-[14px] leading-[14px] text-white">
+                    <span className="bg-[#5ca5a5] uppercase font-bold py-2  px-2  rounded-xl">
+                      new!
+                    </span>
+                    <span className="bg-[#2b3939] uppercase font-bold py-2  px-2  rounded-xl">
+                      featured
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
 
               <h5 className="font-bold text-[15px] leading-6 text-[#2b3939] xl:text-[22px] xl:leading-6 w-full">
                 {item.position}
@@ -37,9 +60,9 @@ const Home = () => {
 
               <div className="flex space-x-3 items-content text-base text-[#7c8f8f] tracking-[-0.123px] xl:text-[18px] xl:leading-6 xl:font-medium ">
                 <span className="flex">{item.postedAt}</span>
-                <span className="w-[4px] ">.</span>
+                <img className="w-[4px]" src={oval} />
                 <span className="flex">{item.contract}</span>
-                <span className="w-[4px]">.</span>
+                <img className="w-[4px]" src={oval} />
                 <span className="flex">{item.location}</span>
               </div>
             </div>
@@ -68,10 +91,8 @@ const Home = () => {
 
             {/* desktop container */}
 
-            <div className="hidden  space-x-5 text-base font-bold text-[#5ca5a5] tracking-[-0.123px] xl:flex xl:items-center">
-              <span className="flex bg-[#eef6f6] p-2 rounded ">
-                {item.role}
-              </span>
+            <div className="hidden  space-x-5 text-base font-bold text-[#5ca5a5]  tracking-[-0.123px] xl:flex  items-center">
+              <span className="flex bg-[#eef6f6] p-2 rounded">{item.role}</span>
 
               <span className="flex bg-[#eef6f6] p-2 rounded">
                 {item.level}
