@@ -81,7 +81,7 @@ const Home = () => {
             style={{
               borderLeft: item.new && item.featured ? "5px solid #5ca5a5" : "",
             }}
-            className="relative flex flex-col my-5 space-y-7 bg-white px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
+            className="relative flex flex-col my-5 space-y-5 py-3  bg-white px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
           >
             <img
               className="absolute -top-[10%]  w-[48px] h-[48px] xl:hidden"
