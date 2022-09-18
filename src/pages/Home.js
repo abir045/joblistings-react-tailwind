@@ -2,7 +2,21 @@ import React, { useEffect, useState } from "react";
 import oval from "../images/oval.svg";
 
 const Home = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+
+  const [filterparam, setFilterParam] = useState(["All"]);
+
+  const [searchParam] = useState(["Frontend", "CSS", "JavaScript"]);
+
+  const search = (data) => {
+    return data.filter((item) => {
+      if (item.role == filterparam) {
+        return searchParam.some((newItem) => {
+          return item[newItem].toString().toLowerCase().indexOf();
+        });
+      }
+    });
+  };
 
   //fetching data
   useEffect(() => {
@@ -20,13 +34,54 @@ const Home = () => {
 
   return (
     <div className="flex flex-col mx-[5%]  space-y-10 xl:space-y-5 xl:mr-15 xl:ml-40 xl:my-[5%]">
+      <div className="flex flex-row space-x-3 mt- h-[120px] p-10  bg-white">
+        <div
+          onChange={(e) => {
+            setFilterParam(e.target.value);
+          }}
+          className="flex-row space-x-3"
+        >
+          <input
+            className="hidden"
+            type="radio"
+            id="role"
+            name="role"
+            value="Frontend"
+            hidden
+          />
+          <label for="Frontend">Frontend</label>
+        </div>
+        <div className="flex-row space-x-3">
+          <input
+            className="hidden"
+            type="radio"
+            id="languages"
+            name="languages"
+            value="CSS"
+            hidden
+          />
+          <label for="CSS">CSS</label>
+        </div>
+        <div className="flex-row space-x-3">
+          <input
+            className="dec"
+            type="radio"
+            id="javascript"
+            name="languages"
+            value="JavaScript"
+            hidden
+          />
+          <label for="JavaScript">JavaScript</label>
+        </div>
+      </div>
+
       {data &&
         data.map((item) => (
           <div
             style={{
               borderLeft: item.new && item.featured ? "5px solid #5ca5a5" : "",
             }}
-            className="relative flex flex-col mt-[15%]  space-y-4 bg-white  py-2  px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
+            className="relative flex flex-col my-5 space-y-7 bg-white px-[5%]  drop-shadow-lg rounded-lg xl:pr-10 xl:pl-5 xl:flex-row  xl:items-center xl:space-x-5 xl:my-5 xl:h-[152px]  "
           >
             <img
               className="absolute -top-[10%]  w-[48px] h-[48px] xl:hidden"
